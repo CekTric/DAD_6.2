@@ -1,0 +1,920 @@
+.navbar {
+  background-color: #dc7500;
+  position: fixed; 
+  top: 0;           
+  left: 0;         
+  width: 100%;     
+  z-index: 1000;  
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: white 2px solid;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  
+}
+
+.nav-list li {
+  margin: 0 3px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #383838;
+  font-weight: bold;
+  text-decoration: none;
+  list-style-type: none;
+  position: relative;
+  font-size: 15px;
+}
+
+.nav-list a:hover {
+  color: #ffffff;
+}
+
+.user-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: 200px;
+}
+
+.user-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  position: relative; /* Added to position the icon */
+}
+
+.user-links a::after {
+  content: none; /* Remove the white bar on hover */
+}
+
+.user-links a svg {
+  width: 20px; /* Adjusted size */
+  height: 20px; /* Adjusted size */
+}
+
+
+nav a::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: rgb(234, 255, 2);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav h1{
+  left: 0;
+  font-size: 20px;
+  padding-right: 50px;
+}
+
+.react-logo{
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  padding-left: 30px;
+  padding-top: 5px;
+}
+
+
+.active {
+  color: #ffffff !important;
+}
+
+body {
+  padding-top: 50px; 
+  display: flex;         
+  justify-content: center; 
+  align-items: center;     
+  min-height: 100vh;      
+  margin: 0;  
+  background-color: #2A2A2A;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.buscaJuego{
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.portadaJuego{
+  border-radius: 15px;
+  box-shadow: #ffffff 0px 5px 10px;
+}
+
+.datosJuego{
+  margin-bottom: 50px;
+  padding-top: 90px;
+  border-top: white 1px solid;
+}
+
+.vistaJuegos{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px;
+}
+
+.vistaJuegos h3{
+  font-size: 25px;
+}
+
+.descripcionJuego{
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 900px){
+  .vistaJuegos{
+    grid-template-columns: 1fr;
+  }
+
+  .navbar{
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .user-links {
+    gap: 10px;
+  }
+}
+
+.container{
+  text-align: center;
+}
+
+input{
+  padding: 4px;
+  border: white 2px solid;
+  border-radius: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+}
+
+.switch {
+  margin-right: 80px;
+  font-size: 12px;
+  position: relative;
+  width: 4em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 1;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a0a0a0;
+  border: 2px solid #000000;
+  transition: .4s;
+  margin-left: 8px;
+  margin-right: -8px;
+}
+
+.off {
+  position: absolute;
+  content: "";
+  height: 2em;
+  width: 2em;
+  background-color: white;
+  transition: .4s;
+  image-rendering: pixelated;
+  opacity: 1;
+}
+
+.on {
+  position: absolute;
+  content: "";
+  height: 2em;
+  width: 2em;
+  background-color: white;
+  transition: .4s;
+  image-rendering: pixelated;
+  opacity: 0;
+}
+
+.switch input:checked + .slider {
+  background-color: #ccc;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #ccc;
+}
+
+.switch input:checked ~ .off {
+  transform: translateX(2em);
+}
+
+.switch input:checked ~ .on {
+  transform: translateX(2em);
+  opacity: 1;
+}
+
+/* Light Theme Styles */
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light-theme .navbar {
+  background-color: #838383;
+  border-color: #000;
+}
+
+.light-theme .navbar img {
+  filter: drop-shadow(0 0 0.75 #000);
+}
+
+.light-theme .nav-list a {
+  color: #000;
+}
+
+.light-theme nav a::after {
+  color: #000;
+}
+
+.light-theme .nav-list a:hover {
+  color: #0056b3;
+}
+
+.light-theme .nav-list .active {
+  color: #000000 !important;
+}
+
+.light-theme body {
+  background-color: #e0e0e0;
+}
+
+.light-theme .portadaJuego{
+  box-shadow: #000000 0px 5px 10px;
+}
+
+.light-theme .datosJuego{
+  border-top: black 2px solid;
+}
+
+.light-theme .login-form-container {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.light-theme .login-title,
+.light-theme .login-page-link,
+.light-theme .login-sign-up-label,
+.light-theme .login-sign-up-link,
+.light-theme .login-google-text {
+  color: #ffffff;
+}
+
+.light-theme .login-input {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.light-theme .login-form-btn {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light-theme .login-apple-login-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
+}
+
+.light-theme .login-google-login-button {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+/* POP UP */
+.search-container {
+  position: relative;
+  display: inline-block;
+  color: black;
+}
+
+.search-popup {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%); /* Centrado horizontal */
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2001;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-popup li {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: #000 1px solid;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.search-popup li p{
+  color: green;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: #000 1px solid;
+}
+
+.search-popup li:hover {
+  background-color: #f0f0f0;
+}
+
+.result-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/*LOGIN*/
+.login-form-container {
+  width: 350px;
+  height: 520px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-title {
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 10px 0 30px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.login-input {
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 12px 15px;
+}
+
+.login-page-link {
+  text-decoration: underline;
+  margin: 0;
+  text-align: end;
+  color: #747474;
+  text-decoration-color: #747474;
+}
+
+.login-page-link-label {
+  cursor: pointer;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.login-page-link-label:hover {
+  color: #000;
+}
+
+.login-form-btn {
+  padding: 10px 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 20px;
+  border: 0 !important;
+  outline: 0 !important;
+  background: teal;
+  color: white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login-form-btn:active {
+  box-shadow: none;
+}
+
+.login-sign-up-label {
+  margin: 0;
+  font-size: 10px;
+  color: #747474;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.login-sign-up-link {
+  margin-left: 1px;
+  font-size: 11px;
+  text-decoration: underline;
+  text-decoration-color: teal;
+  color: teal;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.login-buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.login-apple-login-button,
+.login-google-login-button {
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  gap: 5px;
+}
+
+.login-apple-login-button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.login-google-login-button {
+  border: 2px solid #747474;
+}
+
+.login-apple-icon,
+.login-google-icon {
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+
+.login-form-text {
+  color: #000000;
+}
+
+.login-google-text {
+  color: #000000;
+}
+
+/* UserPage Card Styles */
+.userpage-container {
+  height: 350px;
+  width: 240px;
+  color: white;
+  perspective: 800px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.userpage-card {
+  width: 100%;
+  height: 100%;
+  background: black;
+  border-radius: 2rem;
+  position: relative;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+}
+
+.userpage-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  position: absolute;
+  width: 50%;
+  background-color: transparent;
+  border: 2px solid black;
+  top: 0;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.7);
+}
+
+.userpage-card-top-para {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.userpage-container:hover > .userpage-card {
+  cursor: pointer;
+  transform: rotateX(180deg) rotateZ(-180deg);
+}
+
+.userpage-front,
+.userpage-back {
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.7);
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.userpage-front svg {
+  margin-top: 30px;
+}
+
+.userpage-back {
+  background-color: black;
+  transform: rotateX(180deg) rotateZ(-180deg);
+}
+
+.userpage-heading {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.userpage-follow {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.userpage-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+/* Components Styles */
+
+.interactive-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.components-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.component {
+  background-color: #dc7500;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .components-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .component {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+}
+
+.interactive-container-unique {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttons-wrapper-unique {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  position: center;
+  top: 100px; /* Adjust as needed */
+  z-index: 1001;
+}
+
+.buttons-wrapper-unique button {
+  margin: 0 10px; /* Add separation between buttons */
+}
+
+.component-wrapper-unique {
+  margin-bottom: 20px;
+}
+
+.components-wrapper-unique {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 20px; 
+}
+
+.component-unique {
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .buttons-wrapper-unique {
+    flex-direction: column;
+    align-items: center;
+    top: 50px; /* Adjust as needed */
+  }
+
+  .components-wrapper-unique {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .component-unique {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+}
+
+.toggle-button-unique {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .components-wrapper-unique {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .component-unique {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+}
+
+/* New Button Styles */
+.btn {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  justify-content: center; /* Center content */
+  background: #040f16;
+  color: #f5f5f5;
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+}
+
+.btn .icon {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.btn .text {
+  transform: translateX(45px);
+}
+
+.btn:hover .icon {
+  width: 125px;
+}
+
+.btn:hover .text {
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active .icon {
+  transform: scale(0.85);
+}
+
+.nav-list.open {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #dc7500;
+  padding: 10px 0;
+  border-top: white 2px solid;
+}
+
+.light-theme .nav-list.open {
+  background-color: #838383; 
+}
+
+@media screen and (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+
+  .nav-list.open {
+    display: flex;
+  }
+
+  .btn {
+    display: flex;
+  }
+
+  .user-links {
+    order: -1; /* Move to the top */
+    padding-left: 0;
+  }
+}
+
+/* Voice Button */
+.voice-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.voice-button {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.voice-button:hover {
+  background-color: #e0e0e0;
+}
+
+.voice-button svg {
+  color: #000000;
+  width: 30px;
+  height: 30px;
+}
+
+.light-theme .voice-button {
+  background-color: #000000;
+}
+
+.light-theme .voice-button:hover {
+  background-color: #333333;
+}
+
+.light-theme .voice-button svg {
+  color: #ffffff;
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+  position: fixed;
+  top: 60px; /* Ajusta la posición para que esté por debajo de la navbar */
+  right: 0;
+  width: 50px;
+  height: calc(100% - 60px); /* Ajusta la altura para que no tape la navbar */
+  background-color: #2a2a2a;
+  transition: width 0.3s;
+  z-index: 1000;
+}
+
+.chatbot-container.open {
+  width: 400px; /* Aumenta el ancho de la ventana del chatbot */
+}
+
+.chatbot-toggle {
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  width: 40px; 
+  height: 40px;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%; /* Hace el botón redondo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chatbot-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 98%;
+}
+
+.chatbot-content input {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.chatbot-content button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #dc7500;
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+  
+}
+
+
+
+
+
