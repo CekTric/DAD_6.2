@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { LoginContext } from '../context/LoginContext';
+import { LoginContext } from './context/LoginContext';
 import '../css/estilos.css';
 
 export const UserPage = () => {
