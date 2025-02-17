@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
-import '../css/estilos.css';
+import './css/estilos.css';
 
 export const UserPage = () => {
   const { loginData } = useContext(LoginContext);
