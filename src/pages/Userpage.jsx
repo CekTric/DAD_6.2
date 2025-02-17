@@ -5,6 +5,7 @@ import '../css/estilos.css';
 export const UserPage = () => {
   const { loginData } = useContext(LoginContext);
   console.log(loginData);
+  
   return (
     <div>
       <div className="userpage-container">
