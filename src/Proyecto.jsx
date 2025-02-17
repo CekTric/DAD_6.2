@@ -4,7 +4,7 @@ import { ContadorPage } from './pages/ContadorPage'
 import { ErrorPage } from './pages/ErrorPage'
 import { GestorTareaPage } from './pages/GestorTareaPage'
 import { LoginPage } from './pages/LoginPage'
-import { UserPage } from './pages/userPage'
+import { UserPage } from './pages/UserPage'
 import { SuApiPage } from './pages/SuApiPage'
 import Chatbot from './components/Chatbot'
 import { InformesPage } from './pages/InformesPage'
@@ -27,7 +27,7 @@ const MiProyecto = () => {
                         <Route path='/gestor' element={<GestorTareaPage></GestorTareaPage>}></Route>
                         <Route path='/interactive' element={<InteractiveComponents />} />
                         <Route path='/login' element={<LoginPage></LoginPage>}></Route>
-                        <Route path='/user' element={<UserPage></UserPage>}></Route>
+                        <Route path='/user' element={<UserPage />}></Route>
                         <Route path='/informes' element={<InformesPage />} />
                         <Route path='/*' element={<ErrorPage></ErrorPage>}></Route>
                     </Routes>
