@@ -18,19 +18,13 @@ export const MiAPI = () => {
         });
         
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        
-        if (data.length === 0) {
-          setError('No se encontraron juegos.');
-        } else {
-          setGames(data);
-        }
+        setGames(data);
       } catch (error) {
         setError('Error al obtener los juegos: ' + error.message);
-        console.error('Error detallado:', error);
       } finally {
         setLoading(false);
       }
