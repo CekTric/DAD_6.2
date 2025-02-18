@@ -4,7 +4,7 @@ import { ContadorPage } from './pages/ContadorPage'
 import { ErrorPage } from './pages/ErrorPage'
 import { GestorTareaPage } from './pages/GestorTareaPage'
 import { LoginPage } from './pages/LoginPage'
-import UserPage from './userpage.jsx';
+import { UserPage } from './userpage.jsx';
 import { SuApiPage } from './pages/SuApiPage'
 import Chatbot from './components/Chatbot'
 import { InformesPage } from './pages/InformesPage'
