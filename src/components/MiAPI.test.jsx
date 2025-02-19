@@ -1,7 +1,11 @@
+/*Importaciones de funciones de vitest, herramientas de testing de library 
+y del componente de la API.*/
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MiAPI } from "./MiAPI";
 
+/*Defino un mock, que es un conjunto de datos simulado que se usará como 
+respuesta para las llamadas fetch durante las pruebas.*/
 const mockGameData = [
   {
     id: 1,
@@ -11,12 +15,13 @@ const mockGameData = [
   }
 ];
 
-// Mock fetch to better simulate the API response
+/*mockFetch simula la función fetch en caso de que sea true o no el success
+un parametro booleano que indica si ha recibido los datos.*/
 const mockFetch = (success = true) => {
   if (success) {
     global.fetch = vi.fn(() =>
       Promise.resolve({
-        ok: true, // Add this to match the response.ok check
+        ok: true,
         json: () => Promise.resolve(mockGameData)
       })
     );
@@ -31,42 +36,65 @@ const mockFetch = (success = true) => {
   }
 };
 
+/*describe se usa para agrupar las pruebas. Y uso un resetAllMocks para
+asegurarme de que no ocurren interferencias entre las pruebas.*/
 describe("MiAPI Component", () => {
   beforeEach(() => {
     vi.resetAllMocks();
     mockFetch(true);
   });
 
-  it("renders without crashing", async () => {
+  /*Primera prueba: Renderizar los datos recibidos, una vez encontrado
+  los carga y luego de renderizar los muestra. En este caso busca por nombre
+  del titulo, filtra y lo enseña. */
+  it("renders without crashing and shows game data", async () => {
     render(<MiAPI />);
+
+    // Espera a que se carguen los datos del juego.
+    const loadingElement = screen.getByText("Cargando...");
+    console.log("Estado de carga:", loadingElement.textContent);
+    expect(loadingElement).toBeInTheDocument();
     
-    // First check for loading state
-    expect(screen.getByText("Cargando...")).toBeInTheDocument();
-    
-    // Then wait for the game to appear
+    // Comprueba que el título y la descripción se muestren en la pantalla.
     const gameTitle = await screen.findByText("Genshin Impact");
+    console.log("Título del juego encontrado:", gameTitle.textContent);
     expect(gameTitle).toBeInTheDocument();
+    
+    const description = screen.getByText("Un RPG de mundo abierto.");
+    console.log("Descripción del juego:", description.textContent);
+    expect(description).toBeInTheDocument();
+    
+    /* Espera a que se complete la carga y verifica que el contenido 
+     completo del documento esté presente.*/
+    console.log("Contenido completo del documento:");
   });
 
+  /*Segunda prueba: Filtra el juego por busqueda y lo imprime por pantalla. */
   it("filters games based on search input", async () => {
     render(<MiAPI />);
     
-    // Wait for initial data to load
-    await screen.findByText("Genshin Impact");
+    const gameTitle = await screen.findByText("Genshin Impact");
+    console.log("Título inicial:", gameTitle.textContent);
     
-    // Perform search
+    // Busca un juego por su título.
     const searchInput = screen.getByPlaceholderText("Buscar juego...");
     fireEvent.change(searchInput, { target: { value: "Genshin" } });
+    console.log("Término de búsqueda:", searchInput.value);
     
-    // Verify filtered results
-    expect(screen.getByText("Genshin Impact")).toBeInTheDocument();
+    // Comprueba que el juego filtrado se muestre en la pantalla.
+    const filteredTitle = screen.getByText("Genshin Impact");
+    console.log("Resultado filtrado:", filteredTitle.textContent);
   });
 
+  /*Tercera prueba: Muestra un mensaje de error si la llamada fetch falla. */
   it("displays an error message if the fetch fails", async () => {
     mockFetch(false);
     render(<MiAPI />);
     
     const errorMessage = await screen.findByText(/Error al obtener los juegos/);
-    expect(errorMessage).toBeInTheDocument();
+    console.log("Mensaje de error:", errorMessage.textContent);
+    
+    const errorDetails = screen.getByText(/Si el error persiste/);
+    console.log("Detalles del error:", errorDetails.textContent);
   });
 });
