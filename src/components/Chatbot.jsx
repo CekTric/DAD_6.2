@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput } from '@chatscope/chat-ui-kit-react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
@@ -7,6 +7,18 @@ import '../css/estilos.css';
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [freeToPlayGames, setFreeToPlayGames] = useState([
+    "Fortnite",
+    "Apex Legends",
+    "Warframe",
+    "Genshin Impact",
+    "League of Legends",
+    "Valorant",
+    "Dota 2",
+    "Path of Exile",
+    "Hearthstone",
+    "Call of Duty: Warzone"
+  ]);
 
   const handleSend = async (message) => {
     if (message.trim()) {
@@ -39,7 +51,7 @@ const Chatbot = () => {
         const isRelatedToVideoGames = keywords.some(keyword => message.toLowerCase().includes(keyword));
 
         const responseMessage = {
-          message: isRelatedToVideoGames ? responseText : "Lo siento, solo puedo responder preguntas sobre videojuegos.",
+          message: isRelatedToVideoGames ? `Aquí tienes una lista de juegos gratuitos:\n${freeToPlayGames.join('\n')}` : "Lo siento, solo puedo responder preguntas sobre videojuegos.",
           direction: 'incoming',
           sender: 'bot',
         };

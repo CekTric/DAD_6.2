@@ -60,7 +60,7 @@ describe("MiAPI Component", () => {
     console.log("Título del juego encontrado:", gameTitle.textContent);
     expect(gameTitle).toBeInTheDocument();
     
-    const description = screen.getByText("Un RPG de mundo abierto.");
+    const description = await screen.findByText("Un RPG de mundo abierto.");
     console.log("Descripción del juego:", description.textContent);
     expect(description).toBeInTheDocument();
     
@@ -84,6 +84,7 @@ describe("MiAPI Component", () => {
     // Comprueba que el juego filtrado se muestre en la pantalla.
     const filteredTitle = screen.getByText("Genshin Impact");
     console.log("Resultado filtrado:", filteredTitle.textContent);
+    expect(filteredTitle).toBeInTheDocument();
   });
 
   /*Tercera prueba: Muestra un mensaje de error si la llamada fetch falla. */
@@ -93,8 +94,10 @@ describe("MiAPI Component", () => {
     
     const errorMessage = await screen.findByText(/Error al obtener los juegos/);
     console.log("Mensaje de error:", errorMessage.textContent);
+    expect(errorMessage).toBeInTheDocument();
     
     const errorDetails = screen.getByText(/Si el error persiste/);
     console.log("Detalles del error:", errorDetails.textContent);
+    expect(errorDetails).toBeInTheDocument();
   });
 });
